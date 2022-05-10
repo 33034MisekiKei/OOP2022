@@ -8,12 +8,12 @@ namespace Exercise {
     //クラス
     public class Song {
         //歌のタイトル
-        public string Title;
+        public string Title { get; set; }
 
         //アーティスト名
-        public string ArtistName;
+        public string ArtistName { get; set; }
 
         //演奏時間、単位は秒
-        public int Length;
+        public int Length { get; set; }
     }
 }
