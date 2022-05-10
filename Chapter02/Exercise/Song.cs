@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exercise {
     //クラス
-    public class Song {
+    class Song {
         //歌のタイトル
         public string Title { get; set; }
 
