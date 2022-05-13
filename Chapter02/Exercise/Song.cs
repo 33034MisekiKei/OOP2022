@@ -5,19 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Exercise {
-    //クラス
     class Song {
-        //歌のタイトル
-        public string Title { get; set; }
-
-        //アーティスト名
-        public string ArtistName { get; set; }
-
-        //演奏時間、単位は秒
-        public int Length { get; set; }
+        //プロパティ
+        public string Title { get; set; }   //歌のタイトル
+        public string ArtistName { get; set; }  //アーティスト名
+        public int Length { get; set; } //演奏時間（秒）
 
         //引数付きコンストラクタ
-        public Song(string title, string artistname, int length) {
+        public Song( string title, string artistname, int length) {
             Title = title;
             ArtistName = artistname;
             Length = length;
