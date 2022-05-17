@@ -15,6 +15,11 @@ namespace Exercise01 {
             Exercise1_2(numbers);
             Console.WriteLine("--------------------");
 
+            Exercise1_3(numbers);
+            Console.WriteLine("--------------------");
+
+            Exercise1_4(numbers);
+        
         }
 
         private static void Exercise1_1(List<int> numbers) {
@@ -27,6 +32,23 @@ namespace Exercise01 {
 
         private static void Exercise1_2(List<int> numbers) {
             numbers.ForEach(n => Console.WriteLine(n / 2.0));
+        }
+
+        private static void Exercise1_3(List<int> numbers) {
+            var nums = numbers.Where(n => n >= 50);
+            foreach (var n in nums) {
+                Console.WriteLine(n);
+            }
+        }
+
+        private static void Exercise1_4(List<int> numbers) {
+            var list = numbers.Select(n => n * 2).ToList();
+
+            numbers[5] = 5000;
+
+            foreach (var n in list) { //遅延（即時実行）
+                Console.WriteLine(n);
+            }
         }
     }
 }
