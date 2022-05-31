@@ -25,23 +25,40 @@ namespace Exercise03 {
         }
 
         private static void Exercise3_1(string text) {
-            
+            int spaces = text.Count(c => c == ' ');
+            Console.WriteLine("空白数:{0}", spaces);
         }
 
         private static void Exercise3_2(string text) {
-            
+            //P146  
+            var replaced = text.Replace("dig", "small");
+            Console.WriteLine(replaced);
         }
 
         private static void Exercise3_3(string text) {
-            
+            //P148-149
+            int count = text.Split(' ').Length;
+            Console.WriteLine("単語数:{0}", count);
         }
 
         private static void Exercise3_4(string text) {
-            
+            text.Split(' ').Where(word => word.Length <= 4)
+                                .ToList().ForEach(word => Console.WriteLine(word));
         }
 
         private static void Exercise3_5(string text) {
-            
+            var array = text.Split(' ').ToArray();
+            if(array.Length > 0) 
+            {
+                var sb = new StringBuilder(array[0]);
+                foreach (var word in array.Skip(1)) 
+                {
+                    sb.Append(' ');
+                    sb.Append(word);
+                }
+                var str = sb.ToString();
+                Console.WriteLine(str);
+            }
         }
     }
 }
