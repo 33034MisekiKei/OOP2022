@@ -42,6 +42,18 @@ namespace Exercise02
             Console.WriteLine("-----");
 
             Exercise2_7(books);
+
+            Console.WriteLine("-----");
+
+            Exercise2_8(books);
+        }
+
+        private static void Exercise2_8(List<Book> books) 
+        {
+            foreach(var item in books.Select((b,i) => new { i, b.Title })) 
+            {
+                Console.WriteLine((item.i + 1) + "冊目:" + item.Title);
+            }
         }
 
         private static void Exercise2_1(List<Book> books) 
@@ -84,13 +96,17 @@ namespace Exercise02
         private static void Exercise2_6(List<Book> books) 
         {
             var selected = books.Where(b => b.Pages >= 400).OrderByDescending(b => b.Pages);
-            foreach (var book in selected)
-            Console.WriteLine(book.Title);
+            foreach (var book in selected) 
+            {
+                Console.WriteLine("{0}, {1}",book.Title, book.Price);
+            }
         }
 
         private static void Exercise2_7(List<Book> books) 
         {
-            
+            var selected = books.Where(b => b.Title.Contains("C#") && b.Pages <= 500);
+            foreach (var book in selected)
+                Console.WriteLine(book.Title);
         }
     }
     class Book 
