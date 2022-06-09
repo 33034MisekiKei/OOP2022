@@ -32,7 +32,29 @@ namespace NumberGame
         private void Judge_Click(object sender, EventArgs e) 
         {
             //入力した値とあらかじめ取得した乱数を比較し結果を表示
-            
+            if(randomNumder == Number.Value) 
+            {
+                toolStripStatusLabel1.Text = "正解";
+            }
+            else if(randomNumder > Number.Value) 
+            {
+                toolStripStatusLabel1.Text = "入力した値より大きいです";
+            }
+            else if (randomNumder < Number.Value) {
+                toolStripStatusLabel1.Text = "入力した値より小さいです";
+            }
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e) 
+        {
+            getRandom();
+        }
+
+        //乱数取得
+        private void getRandom() 
+        {
+            randomNumder = rand.Next(1, (int)maxNum.Value);
+            //this.Text = randomNumder.ToString();
         }
     }
 }

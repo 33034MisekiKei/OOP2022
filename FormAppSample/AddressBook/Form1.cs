@@ -8,10 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AddressBook {
-    public partial class Form1 : Form {
-        public Form1() {
+namespace AddressBook 
+{
+    public partial class Form1 : Form 
+    {
+        public Form1() 
+        {
             InitializeComponent();
         }
+
     }
 }
