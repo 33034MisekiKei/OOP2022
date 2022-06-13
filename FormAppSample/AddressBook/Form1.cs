@@ -26,10 +26,7 @@ namespace AddressBook
             if(ofdFileOpenDialog.ShowDialog() == DialogResult.OK) 
             {
                 pbPicture.Image = Image.FromFile(ofdFileOpenDialog.FileName);
-
-
             }
-
         }
 
         private void btAddPerson_Click(object sender, EventArgs e) 
@@ -42,9 +39,7 @@ namespace AddressBook
                 Picture = pbPicture.Image,
                 listGroup = GetCheckBoxGroup(),
             };
-
             listPerson.Add(newPerson);
-
 
         }
 
@@ -78,9 +73,11 @@ namespace AddressBook
         }
 
         //データグリッドビューをクリックした時のイベントハンドラ
-        private void dgvPersons_Click(object sender, EventArgs e) {
+        private void dgvPersons_Click(object sender, EventArgs e) 
+        {
+            if (dgvPersons.CurrentRow == null) return;
+
             int index = dgvPersons.CurrentRow.Index;
-            //例
             //データグリッドビューのインデックス０番の名前をテキストボックスに収納
             tbName.Text = listPerson[index].Name;
             tbMailAddress.Text = listPerson[index].MailAddress;
@@ -88,10 +85,12 @@ namespace AddressBook
             tbCompany.Text = listPerson[index].Compamy;
             pbPicture.Image = listPerson[index].Picture;
 
-            groupCheckBoxAllClear();
+            groupCheckBoxAllClear();//グループチェックボックスを一旦初期化
 
-            foreach (var group in listPerson[index].listGroup) {
-                switch (group) {
+            foreach (var group in listPerson[index].listGroup) 
+            {
+                switch (group) 
+                {
                     case Person.GroupType.家族:
                         cbFamily.Checked = true;
                         break;
@@ -114,6 +113,29 @@ namespace AddressBook
         private void groupCheckBoxAllClear() 
         {
             cbFamily.Checked = cbFriend.Checked = cbWork.Checked = cbOther.Checked = false;
+        }
+
+        //更新ボタンが押された時の処理
+        private void btUpdate_Click(object sender, EventArgs e) 
+        {
+            listPerson[dgvPersons.CurrentRow.Index].Name = tbName.Text;
+            listPerson[dgvPersons.CurrentRow.Index].MailAddress = tbMailAddress.Text;
+            listPerson[dgvPersons.CurrentRow.Index].Address = tbAddress.Text;
+            listPerson[dgvPersons.CurrentRow.Index].Compamy = tbCompany.Text;
+            listPerson[dgvPersons.CurrentRow.Index].listGroup = GetCheckBoxGroup();
+            listPerson[dgvPersons.CurrentRow.Index].Picture = pbPicture.Image;
+            dgvPersons.Refresh();//データグリッドビュー更新
+        }
+        //削除ボタンが押された時の処理
+        private void btDeletion_Click(object sender, EventArgs e)   
+        {
+            listPerson.RemoveAt(dgvPersons.CurrentRow.Index);
+            //dgvPersons.Rows[dgvPersons.CurrentRow]
+        }
+
+        private void Form1_Load(object sender, EventArgs e) 
+        {
+            //btDeletion.Enabled = false;削除ボタンをマスク
         }
     }
 }
