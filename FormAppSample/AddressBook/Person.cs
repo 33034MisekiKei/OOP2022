@@ -26,7 +26,7 @@ namespace AddressBook
             家族,
             友人,
             仕事,
-            その他
+            その他,
         }
     }
 }

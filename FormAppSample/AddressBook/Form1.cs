@@ -34,22 +34,86 @@ namespace AddressBook
 
         private void btAddPerson_Click(object sender, EventArgs e) 
         {
-            Person newPerson = new Person 
-            {
+            Person newPerson = new Person {
                 Name = tbName.Text,
                 MailAddress = tbMailAddress.Text,
                 Address = tbAddress.Text,
                 Compamy = tbCompany.Text,
                 Picture = pbPicture.Image,
+                listGroup = GetCheckBoxGroup(),
             };
 
             listPerson.Add(newPerson);
+
+
+        }
+
+        //チェックボックスにセットされている値をリストとして取り出す
+        private List<Person.GroupType> GetCheckBoxGroup() 
+        {
+            var listGroup = new List<Person.GroupType>();
+            if (cbFamily.Checked) 
+            {
+                listGroup.Add(Person.GroupType.家族);
+            }
+            if (cbFriend.Checked) 
+            {
+                listGroup.Add(Person.GroupType.友人);
+            }
+            if (cbWork.Checked) 
+            {
+                listGroup.Add(Person.GroupType.仕事);
+            }
+            if (cbOther.Checked) 
+            {
+                listGroup.Add(Person.GroupType.その他);
+            }
+            return listGroup;
 
         }
 
         private void btPictureClear_Click(object sender, EventArgs e) 
         {
             pbPicture.Image = null;
+        }
+
+        //データグリッドビューをクリックした時のイベントハンドラ
+        private void dgvPersons_Click(object sender, EventArgs e) {
+            int index = dgvPersons.CurrentRow.Index;
+            //例
+            //データグリッドビューのインデックス０番の名前をテキストボックスに収納
+            tbName.Text = listPerson[index].Name;
+            tbMailAddress.Text = listPerson[index].MailAddress;
+            tbAddress.Text = listPerson[index].Address;
+            tbCompany.Text = listPerson[index].Compamy;
+            pbPicture.Image = listPerson[index].Picture;
+
+            groupCheckBoxAllClear();
+
+            foreach (var group in listPerson[index].listGroup) {
+                switch (group) {
+                    case Person.GroupType.家族:
+                        cbFamily.Checked = true;
+                        break;
+                    case Person.GroupType.友人:
+                        cbFriend.Checked = true;
+                        break;
+                    case Person.GroupType.仕事:
+                        cbWork.Checked = true;
+                        break;
+                    case Person.GroupType.その他:
+                        cbOther.Checked = true;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        //グループのチェックボックスをオールクリア
+        private void groupCheckBoxAllClear() 
+        {
+            cbFamily.Checked = cbFriend.Checked = cbWork.Checked = cbOther.Checked = false;
         }
     }
 }
