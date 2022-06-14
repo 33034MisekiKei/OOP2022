@@ -101,13 +101,15 @@ namespace AddressBook {
             // 
             // dgvPersons
             // 
+            this.dgvPersons.AllowUserToDeleteRows = false;
             this.dgvPersons.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPersons.Location = new System.Drawing.Point(31, 308);
+            this.dgvPersons.Location = new System.Drawing.Point(12, 303);
             this.dgvPersons.MultiSelect = false;
             this.dgvPersons.Name = "dgvPersons";
+            this.dgvPersons.ReadOnly = true;
             this.dgvPersons.RowTemplate.Height = 21;
             this.dgvPersons.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPersons.Size = new System.Drawing.Size(673, 247);
+            this.dgvPersons.Size = new System.Drawing.Size(707, 281);
             this.dgvPersons.TabIndex = 1;
             this.dgvPersons.Click += new System.EventHandler(this.dgvPersons_Click);
             // 

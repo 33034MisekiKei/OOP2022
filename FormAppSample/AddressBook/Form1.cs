@@ -31,7 +31,8 @@ namespace AddressBook
 
         private void btAddPerson_Click(object sender, EventArgs e) 
         {
-            Person newPerson = new Person {
+            Person newPerson = new Person 
+            {
                 Name = tbName.Text,
                 MailAddress = tbMailAddress.Text,
                 Address = tbAddress.Text,
@@ -40,7 +41,13 @@ namespace AddressBook
                 listGroup = GetCheckBoxGroup(),
             };
             listPerson.Add(newPerson);
+            dgvPersons.Rows[dgvPersons.RowCount - 1].Selected = true;
 
+            if(listPerson.Count() == 0) 
+            {
+                btDeletion.Enabled = false;
+                btUpdate.Enabled = false;
+            }
         }
 
         //チェックボックスにセットされている値をリストとして取り出す
@@ -130,12 +137,18 @@ namespace AddressBook
         private void btDeletion_Click(object sender, EventArgs e)   
         {
             listPerson.RemoveAt(dgvPersons.CurrentRow.Index);
-            //dgvPersons.Rows[dgvPersons.CurrentRow]
+
+            if (listPerson.Count() == 0) 
+            {
+                btDeletion.Enabled = false;
+                btUpdate.Enabled = false;
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e) 
         {
-            //btDeletion.Enabled = false;削除ボタンをマスク
+            btDeletion.Enabled = false; //削除ボタンをマスク
+            btUpdate.Enabled = false; 　//変更ボタンをマスク
         }
     }
 }
