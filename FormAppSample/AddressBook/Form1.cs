@@ -31,22 +31,36 @@ namespace AddressBook
 
         private void btAddPerson_Click(object sender, EventArgs e) 
         {
+            //氏名が未入力なら登録しない
+            if(String.IsNullOrWhiteSpace(tbName.Text)) 
+            {
+                MessageBox.Show("氏名が入力されていません");
+                return;
+            }
             Person newPerson = new Person 
             {
                 Name = tbName.Text,
                 MailAddress = tbMailAddress.Text,
                 Address = tbAddress.Text,
-                Compamy = tbCompany.Text,
+                Compamy = cbCompany.Text,
                 Picture = pbPicture.Image,
                 listGroup = GetCheckBoxGroup(),
             };
+
             listPerson.Add(newPerson);
             dgvPersons.Rows[dgvPersons.RowCount - 1].Selected = true;
 
             if(listPerson.Count() == 0) 
             {
-                btDeletion.Enabled = false;
-                btUpdate.Enabled = false;
+                btDeletion.Enabled = true;
+                btUpdate.Enabled = true;
+            }
+
+            //コンボボックスに会社名を登録(重複しない)
+            if (cbCompany.Items.Contains(cbCompany.Text)) 
+            {
+                //まだ登録されていなければ登録処理
+                cbCompany.Items.Add(cbCompany.Text);
             }
         }
 
@@ -128,7 +142,7 @@ namespace AddressBook
             listPerson[dgvPersons.CurrentRow.Index].Name = tbName.Text;
             listPerson[dgvPersons.CurrentRow.Index].MailAddress = tbMailAddress.Text;
             listPerson[dgvPersons.CurrentRow.Index].Address = tbAddress.Text;
-            listPerson[dgvPersons.CurrentRow.Index].Compamy = tbCompany.Text;
+            listPerson[dgvPersons.CurrentRow.Index].Compamy = cbCompany.Text;
             listPerson[dgvPersons.CurrentRow.Index].listGroup = GetCheckBoxGroup();
             listPerson[dgvPersons.CurrentRow.Index].Picture = pbPicture.Image;
             dgvPersons.Refresh();//データグリッドビュー更新
