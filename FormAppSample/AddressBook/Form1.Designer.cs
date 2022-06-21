@@ -49,7 +49,7 @@ namespace AddressBook {
             this.btOpen = new System.Windows.Forms.Button();
             this.sfdSaveDialog = new System.Windows.Forms.SaveFileDialog();
             this.label6 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpRegistdate = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersons)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).BeginInit();
             this.SuspendLayout();
@@ -289,12 +289,12 @@ namespace AddressBook {
             this.label6.TabIndex = 8;
             this.label6.Text = "登録日";
             // 
-            // dateTimePicker1
+            // dtpRegistdate
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(519, 590);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 19);
-            this.dateTimePicker1.TabIndex = 9;
+            this.dtpRegistdate.Location = new System.Drawing.Point(519, 590);
+            this.dtpRegistdate.Name = "dtpRegistdate";
+            this.dtpRegistdate.Size = new System.Drawing.Size(200, 19);
+            this.dtpRegistdate.TabIndex = 9;
             // 
             // Form1
             // 
@@ -302,7 +302,7 @@ namespace AddressBook {
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(728, 616);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dtpRegistdate);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.cbCompany);
             this.Controls.Add(this.btPictureClear);
@@ -363,7 +363,7 @@ namespace AddressBook {
         private System.Windows.Forms.Button btOpen;
         private System.Windows.Forms.SaveFileDialog sfdSaveDialog;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpRegistdate;
     }
 }
 

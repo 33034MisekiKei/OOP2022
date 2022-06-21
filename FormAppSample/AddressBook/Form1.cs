@@ -47,6 +47,7 @@ namespace AddressBook
                 Compamy = cbCompany.Text,
                 Picture = pbPicture.Image,
                 listGroup = GetCheckBoxGroup(),
+                Registration = dtpRegistdate.Value,
             };
 
             listPerson.Add(newPerson);
@@ -120,6 +121,9 @@ namespace AddressBook
             cbCompany.Text = listPerson[index].Compamy;
             pbPicture.Image = listPerson[index].Picture;
 
+            dtpRegistdate.Value = listPerson[index].Registration.Year > 1900? 
+                listPerson[index].Registration : DateTime.Today;
+
             groupCheckBoxAllClear();//グループチェックボックスを一旦初期化
 
             foreach (var group in listPerson[index].listGroup) 
@@ -159,6 +163,7 @@ namespace AddressBook
             listPerson[dgvPersons.CurrentRow.Index].Compamy = cbCompany.Text;
             listPerson[dgvPersons.CurrentRow.Index].listGroup = GetCheckBoxGroup();
             listPerson[dgvPersons.CurrentRow.Index].Picture = pbPicture.Image;
+            listPerson[dgvPersons.CurrentRow.Index].Registration = dtpRegistdate.Value;
             dgvPersons.Refresh();//データグリッドビュー更新
         }
         //更新・削除ボタンが押された時の処理
@@ -227,6 +232,7 @@ namespace AddressBook
                 {
                     MessageBox.Show(ex.Message);
                 }
+                cbCompany.Items.Clear();//コンボボックスのアイテム消去
                 //コンボボックスへ登録
                 foreach (var item in listPerson.Select(p => p.Compamy))
                 {
