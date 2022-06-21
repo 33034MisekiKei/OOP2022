@@ -74,7 +74,7 @@ namespace AddressBook
             if (!cbCompany.Items.Contains(company)) 
             {
                 //まだ登録されていなければ登録処理
-                cbCompany.Items.Add(cbCompany.Text);
+                cbCompany.Items.Add(company);
             }
         }
 
@@ -161,7 +161,7 @@ namespace AddressBook
             listPerson[dgvPersons.CurrentRow.Index].Picture = pbPicture.Image;
             dgvPersons.Refresh();//データグリッドビュー更新
         }
-        //削除ボタンが押された時の処理
+        //更新・削除ボタンが押された時の処理
         private void btDeletion_Click(object sender, EventArgs e)   
         {
             listPerson.RemoveAt(dgvPersons.CurrentRow.Index);
@@ -170,6 +170,11 @@ namespace AddressBook
             {
                 btDeletion.Enabled = false;
                 btUpdate.Enabled = false;
+            }
+            else 
+            {
+                btDeletion.Enabled = true;
+                btUpdate.Enabled = true;
             }
         }
 
@@ -222,12 +227,13 @@ namespace AddressBook
                 {
                     MessageBox.Show(ex.Message);
                 }
-
-                foreach (var item in listPerson) 
+                //コンボボックスへ登録
+                foreach (var item in listPerson.Select(p => p.Compamy))
                 {
-                    setCbCompany(item.Compamy);//存在する会社を登録
+                    setCbCompany(item);//存在する会社を登録
                 }
             }
+            
         }
     }
 }
