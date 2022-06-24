@@ -34,11 +34,12 @@ namespace AddressBook
         private void btAddPerson_Click(object sender, EventArgs e) 
         {
             //氏名が未入力なら登録しない
-            if(String.IsNullOrWhiteSpace(tbName.Text)) 
+            if (String.IsNullOrWhiteSpace(tbName.Text)) 
             {
                 MessageBox.Show("氏名が入力されていません");
                 return;
             }
+
             Person newPerson = new Person 
             {
                 Name = tbName.Text,
@@ -47,36 +48,32 @@ namespace AddressBook
                 Compamy = cbCompany.Text,
                 Picture = pbPicture.Image,
                 listGroup = GetCheckBoxGroup(),
+                KindNumber = GetRadioButtonKindNumber(),
+                TelNumber = tbTelNumber.Text,
                 Registration = dtpRegistdate.Value,
             };
-
             listPerson.Add(newPerson);
             dgvPersons.Rows[dgvPersons.RowCount - 1].Selected = true;
 
-            if(listPerson.Count() == 0) 
-            {
-                btDeletion.Enabled = true;
-                btUpdate.Enabled = true;
-            }
-
-            //コンボボックスに会社名を登録(重複しない)
-            if (cbCompany.Items.Contains(cbCompany.Text)) 
-            {
-                //まだ登録されていなければ登録処理
-                cbCompany.Items.Add(cbCompany.Text);
-            }
+            EnabledCheck(); //マスク処理呼び出し
 
             setCbCompany(cbCompany.Text);
         }
 
-        //コンボボックスに会社名を登録する（重複なし）
-        private void setCbCompany(string company) 
+        private Person.KindNumberType GetRadioButtonKindNumber() 
         {
-            if (!cbCompany.Items.Contains(company)) 
+            //デフォルトの戻りを設定
+            var selectedKindNumder = Person.KindNumberType.その他;
+
+            if (rbHome.Checked) 
             {
-                //まだ登録されていなければ登録処理
-                cbCompany.Items.Add(company);
+                selectedKindNumder = Person.KindNumberType.自宅;
             }
+            if (rbHome.Checked) 
+            {
+                selectedKindNumder = Person.KindNumberType.携帯;
+            }
+            return selectedKindNumder;
         }
 
         //チェックボックスにセットされている値をリストとして取り出す
@@ -100,9 +97,17 @@ namespace AddressBook
                 listGroup.Add(Person.GroupType.その他);
             }
             return listGroup;
-
         }
 
+        //コンボボックスに会社名を登録する（重複なし）
+        private void setCbCompany(string company) 
+        {
+            if (!cbCompany.Items.Contains(company)) 
+            {
+                //まだ登録されていなければ登録処理
+                cbCompany.Items.Add(company);
+            }
+        }
         private void btPictureClear_Click(object sender, EventArgs e) 
         {
             pbPicture.Image = null;
@@ -110,7 +115,7 @@ namespace AddressBook
 
         //データグリッドビューをクリックした時のイベントハンドラ
         private void dgvPersons_Click(object sender, EventArgs e) 
-        {
+            {
             if (dgvPersons.CurrentRow == null) return;
 
             int index = dgvPersons.CurrentRow.Index;
@@ -121,9 +126,33 @@ namespace AddressBook
             cbCompany.Text = listPerson[index].Compamy;
             pbPicture.Image = listPerson[index].Picture;
 
-            dtpRegistdate.Value = listPerson[index].Registration.Year > 1900? 
-                listPerson[index].Registration : DateTime.Today;
+            dtpRegistdate.Value =
+                listPerson[index].Registration.Year > 1900 ? listPerson[index].Registration : DateTime.Today;
 
+            setGroupType(index); //グループの設定
+            setKindNumderType(index);　//番号種別を設定
+        }
+
+        private void setKindNumderType(int index) 
+        {
+            //番号種別チェック処理
+            switch (listPerson[index].KindNumber) 
+            {
+                case Person.KindNumberType.自宅:
+                    rbHome.Checked = true;
+                    break;
+                case Person.KindNumberType.携帯:
+                    rbMobile.Checked = true;
+                    break;
+                case Person.KindNumberType.その他:
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void setGroupType(int index) 
+        {
             groupCheckBoxAllClear();//グループチェックボックスを一旦初期化
 
             foreach (var group in listPerson[index].listGroup) 
@@ -170,23 +199,22 @@ namespace AddressBook
         private void btDeletion_Click(object sender, EventArgs e)   
         {
             listPerson.RemoveAt(dgvPersons.CurrentRow.Index);
+            EnabledCheck(); //マスク処理呼び出し
+        }
 
-            if (listPerson.Count() == 0) 
-            {
-                btDeletion.Enabled = false;
-                btUpdate.Enabled = false;
-            }
-            else 
-            {
-                btDeletion.Enabled = true;
-                btUpdate.Enabled = true;
-            }
+        //更新・削除ボタンのマスク処理行う（マスク判定含む）
+        private void EnabledCheck() 
+        {
+            btUpdate.Enabled = btDelete.Enabled = listPerson.Count() > 0 ? true : false;
         }
 
         private void Form1_Load(object sender, EventArgs e) 
         {
-            btDeletion.Enabled = false; //削除ボタンをマスク
-            btUpdate.Enabled = false; 　//変更ボタンをマスク
+            EnabledCheck(); //マスク処理呼び出し
+            //背景色
+            //dgvPersons.RowsDefaultCellStyle.BackColor = Color.Bisque;
+            //奇数行
+            dgvPersons.AlternatingRowsDefaultCellStyle.BackColor = Color.AntiqueWhite;
         }
 
         //保存ボタンのイベントハンドラ
@@ -198,7 +226,6 @@ namespace AddressBook
                 {
                     //バイナリー形式でシリアル化
                     var bf = new BinaryFormatter();
-
                     using (FileStream fs = File.Open(sfdSaveDialog.FileName, FileMode.Create)) 
                     {
                         bf.Serialize(fs, listPerson);
@@ -219,7 +246,6 @@ namespace AddressBook
                 {
                     //バイナリ形式で逆シリアル化
                     var bf = new BinaryFormatter();
-
                     using(FileStream fs = File.Open(ofdFileOpenDialog.FileName, FileMode.Open, FileAccess.Read)) 
                     {
                         //逆シリアル化して読み込む
@@ -239,7 +265,7 @@ namespace AddressBook
                     setCbCompany(item);//存在する会社を登録
                 }
             }
-            
+            EnabledCheck(); //マスク処理呼び出し
         }
     }
 }
