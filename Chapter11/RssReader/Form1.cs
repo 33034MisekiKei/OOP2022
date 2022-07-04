@@ -55,6 +55,7 @@ namespace RssReader
 
         private void wvBrowser_NavigationCompleted(object sender, Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.WebViewControlNavigationCompletedEventArgs e) 
         {
+            //進む・戻るボタンのマスク設定
             btBack.Enabled = wvBrowser.CanGoBack;
             btForward.Enabled = wvBrowser.CanGoForward;
         }
@@ -62,6 +63,8 @@ namespace RssReader
         private void lbRssTitle_SelectedIndexChanged(object sender, EventArgs e) 
         {
             int index = lbRssTitle.SelectedIndex; //選択した箇所のインデックスを取得（0～　）
+            if (index == -1) return;
+
             var url = xLink.ElementAt(index);
             //wbBrowser.Url = new Uri(url);
             //wvBrowser.Url = new Uri(url);
