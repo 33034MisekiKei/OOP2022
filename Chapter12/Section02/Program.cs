@@ -70,7 +70,7 @@ namespace Section02
             {
                 var serializer = new XmlSerializer(typeof(NovelCollection));
                 var novel = serializer.Deserialize(reader) as NovelCollection;
-                // 以下、内容を確認するコード
+                //以下、内容を確認するコード
                 //Console.WriteLine(novel);
                 //foreach (var novel in novels.Novels) 
                 {
