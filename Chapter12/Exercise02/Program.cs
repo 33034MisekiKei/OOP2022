@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -18,7 +20,8 @@ namespace Exercise02
 
             // これは確認のためのコード 12.2.1
             Console.WriteLine("{0} {1}", novelist.Name, novelist.Birth);
-            foreach (var title in novelist.Masterpieces) {
+            foreach (var title in novelist.Masterpieces) 
+            {
                 Console.WriteLine(title);
             }
             Console.WriteLine();
@@ -41,9 +44,17 @@ namespace Exercise02
             }
         }
 
-        private static void Exercise2_2(Novelist novelist, string v) 
+        private static void Exercise2_2(Novelist novelist, string outfile) 
         {
-            
+            using (var stream = new FileStream(outfile, FileMode.Create,
+                                                    FileAccess.Write)) {
+                var serializer = new DataContractJsonSerializer(novelist.GetType(),
+                                                            new DataContractJsonSerializerSettings 
+                                                            {
+                                                                DateTimeFormat = new DateTimeFormat("yyyy-MM-dd'T'HH:mm:ssZ")
+                                                            });
+                serializer.WriteObject(stream, novelist);
+            }
         }
     }
 }
