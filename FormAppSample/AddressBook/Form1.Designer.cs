@@ -112,9 +112,10 @@ namespace AddressBook {
             // 
             // dgvPersons
             // 
+            this.dgvPersons.AllowUserToAddRows = false;
             this.dgvPersons.AllowUserToDeleteRows = false;
             this.dgvPersons.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPersons.Location = new System.Drawing.Point(90, 378);
+            this.dgvPersons.Location = new System.Drawing.Point(87, 378);
             this.dgvPersons.MultiSelect = false;
             this.dgvPersons.Name = "dgvPersons";
             this.dgvPersons.ReadOnly = true;
@@ -162,7 +163,7 @@ namespace AddressBook {
             // cbFriend
             // 
             this.cbFriend.AutoSize = true;
-            this.cbFriend.Location = new System.Drawing.Point(274, 261);
+            this.cbFriend.Location = new System.Drawing.Point(270, 261);
             this.cbFriend.Name = "cbFriend";
             this.cbFriend.Size = new System.Drawing.Size(48, 16);
             this.cbFriend.TabIndex = 3;
