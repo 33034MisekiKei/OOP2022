@@ -53,8 +53,13 @@ namespace CarReportSystem {
             this.btEnd = new System.Windows.Forms.Button();
             this.ofdFileOpenDialog = new System.Windows.Forms.OpenFileDialog();
             this.sfdSaveDialog = new System.Windows.Forms.SaveFileDialog();
+            this.cdColorSelect = new System.Windows.Forms.ColorDialog();
+            this.btSaveReport = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.ファイルToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersons)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -211,7 +216,7 @@ namespace CarReportSystem {
             // 
             // btPictureOpen
             // 
-            this.btPictureOpen.Location = new System.Drawing.Point(611, 24);
+            this.btPictureOpen.Location = new System.Drawing.Point(598, 24);
             this.btPictureOpen.Name = "btPictureOpen";
             this.btPictureOpen.Size = new System.Drawing.Size(75, 23);
             this.btPictureOpen.TabIndex = 7;
@@ -221,7 +226,7 @@ namespace CarReportSystem {
             // 
             // btPictureClear
             // 
-            this.btPictureClear.Location = new System.Drawing.Point(709, 24);
+            this.btPictureClear.Location = new System.Drawing.Point(679, 24);
             this.btPictureClear.Name = "btPictureClear";
             this.btPictureClear.Size = new System.Drawing.Size(75, 23);
             this.btPictureClear.TabIndex = 8;
@@ -236,6 +241,7 @@ namespace CarReportSystem {
             this.pbPicture.Size = new System.Drawing.Size(229, 256);
             this.pbPicture.TabIndex = 9;
             this.pbPicture.TabStop = false;
+            this.pbPicture.Click += new System.EventHandler(this.pbPicture_Click);
             // 
             // btAddPerson
             // 
@@ -321,7 +327,7 @@ namespace CarReportSystem {
             // 
             // btEnd
             // 
-            this.btEnd.Location = new System.Drawing.Point(699, 632);
+            this.btEnd.Location = new System.Drawing.Point(6, 500);
             this.btEnd.Name = "btEnd";
             this.btEnd.Size = new System.Drawing.Size(99, 23);
             this.btEnd.TabIndex = 17;
@@ -331,6 +337,33 @@ namespace CarReportSystem {
             // ofdFileOpenDialog
             // 
             this.ofdFileOpenDialog.FileName = "openFileDialog1";
+            // 
+            // btSaveReport
+            // 
+            this.btSaveReport.Location = new System.Drawing.Point(760, 24);
+            this.btSaveReport.Name = "btSaveReport";
+            this.btSaveReport.Size = new System.Drawing.Size(31, 23);
+            this.btSaveReport.TabIndex = 8;
+            this.btSaveReport.Text = "★";
+            this.btSaveReport.UseVisualStyleBackColor = true;
+            this.btSaveReport.Click += new System.EventHandler(this.btSaveReport_Click);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ファイルToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(810, 24);
+            this.menuStrip1.TabIndex = 18;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // ファイルToolStripMenuItem
+            // 
+            this.ファイルToolStripMenuItem.Name = "ファイルToolStripMenuItem";
+            this.ファイルToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.ファイルToolStripMenuItem.Text = "ファイル";
+            this.ファイルToolStripMenuItem.Click += new System.EventHandler(this.ファイルToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -346,6 +379,7 @@ namespace CarReportSystem {
             this.Controls.Add(this.btUpdate);
             this.Controls.Add(this.btAddPerson);
             this.Controls.Add(this.pbPicture);
+            this.Controls.Add(this.btSaveReport);
             this.Controls.Add(this.btPictureClear);
             this.Controls.Add(this.btPictureOpen);
             this.Controls.Add(this.rbOther);
@@ -364,10 +398,15 @@ namespace CarReportSystem {
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "試乗レポート管理システム";
+            this.Load += new System.EventHandler(this.Form1_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersons)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -404,6 +443,10 @@ namespace CarReportSystem {
         private System.Windows.Forms.Button btEnd;
         private System.Windows.Forms.OpenFileDialog ofdFileOpenDialog;
         private System.Windows.Forms.SaveFileDialog sfdSaveDialog;
+        private System.Windows.Forms.ColorDialog cdColorSelect;
+        private System.Windows.Forms.Button btSaveReport;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem ファイルToolStripMenuItem;
     }
 }
 

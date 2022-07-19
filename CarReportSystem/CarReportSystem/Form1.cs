@@ -9,14 +9,19 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace CarReportSystem 
 {
     public partial class Form1 : Form 
     {
+        Settings settings = new Settings();
+
         //データ管理用リスト
         BindingList<CarReport> listCarReport = new BindingList<CarReport>();
 
+        int mode = 0;
         public Form1() 
         {
             InitializeComponent();
@@ -52,8 +57,44 @@ namespace CarReportSystem
             EnabledCheck(); //マスク処理呼び出し
 
             setCbCarName(cbCarName.Text);
-
         }
+
+        private void ファイルToolStripMenuItem_Click(object sender, EventArgs e) 
+        {
+            //色設定ダイアログ
+            if (cdColorSelect.ShowDialog() == DialogResult.OK) {
+                BackColor = cdColorSelect.Color;
+                settings.MainFormColor = cdColorSelect.Color;
+            }
+        }
+    
+    private void pbPicture_Click(object sender, EventArgs e) 
+        {
+            pbPicture.SizeMode = (PictureBoxSizeMode)mode;
+            mode = mode < 4 ? ++mode : 0;
+        }
+
+        private void Form1_FormClased(object sender, FormClosedEventArgs e) 
+        {
+            //設定ファイルをシリアル化
+            using (var writr = XmlWriter.Create("settings.xml")) {
+                var serializer = new XmlSerializer(settings.GetType());
+              //serializer.Serialize(writr.Settings);
+            }
+            
+        }
+
+        private void Form1_Load_1(object sender, EventArgs e) 
+        {
+            //設定ファイルを逆シリアル化して背景の色に設定
+            using (var reader = XmlReader.Create("settings.xml")) 
+            {
+                var serializer = new XmlSerializer(typeof(Settings));
+                settings = serializer.Deserialize(reader) as Settings;
+            }
+            EnabledCheck();
+        }
+
         //チェックボックスにセットされている値をリストとして取り出す
         private List<CarReport.MakerGroup> GetCheckBoxGroup() 
         {
@@ -177,7 +218,8 @@ namespace CarReportSystem
                 try {
                     //バイナリ形式で逆シリアル化
                     var bf = new BinaryFormatter();
-                    using (FileStream fs = File.Open(ofdFileOpenDialog.FileName, FileMode.Open, FileAccess.Read)) {
+                    using (FileStream fs = File.Open(ofdFileOpenDialog.FileName, FileMode.Open, FileAccess.Read)) 
+                    {
                         //逆シリアル化して読み込む
                         listCarReport = (BindingList<CarReport>)bf.Deserialize(fs);
                         dgvPersons.DataSource = null;
@@ -188,15 +230,30 @@ namespace CarReportSystem
                 {
                     MessageBox.Show(ex.Message);
                 }
+                cbAuther.Items.Clear();//コンボボックスのアイテム消去
                 cbCarName.Items.Clear();//コンボボックスのアイテム消去
                 //コンボボックスへ登録
+                foreach (var item in listCarReport.Select(p => p.Auther)) 
+                {
+                    setCbCarName(item);//登録
+                }
                 foreach (var item in listCarReport.Select(p => p.CarName)) 
                 {
-                    setCbCarName(item);//存在する会社を登録
+                    setCbCarName(item);//登録
                 }
             }
             EnabledCheck(); //マスク処理呼び出し
         }
+
+        private void btSaveReport_Click(object sender, EventArgs e) 
+        {
+            if (ofdFileOpenDialog.ShowDialog() == DialogResult.OK) 
+            {
+                
+            }
+        }
+
+        
     }
 }
 
