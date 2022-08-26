@@ -17,7 +17,7 @@ namespace CarReportSystem
     public partial class Form1 : Form 
     {
         //設定情報保存用オブジェクト
-        Settings settings = new Settings();
+        Settings settings = Settings.getInstance();
 
         //カーレポート管理用リスト
         BindingList<CarReport> listCarReports = new BindingList<CarReport>();
@@ -59,15 +59,24 @@ namespace CarReportSystem
             }
         }
 
-        private void Form1_Load_1(object sender, EventArgs e) 
-        {
-            //設定ファイルを逆シリアル化して背景の色に設定
-            using (var writer = XmlWriter.Create("settings.xml")) 
-            {
-                var serializer = new XmlSerializer(settings.GetType());
-                serializer.Serialize(writer,settings);
+        private void Form1_Load_1(object sender, EventArgs e) {
+            try {
+                //設定ファイルを逆シリアル化して背景の色に設定
+                using (var reader = XmlReader.Create("settings.xml")) 
+                {
+                    var serializer = new XmlSerializer(settings.GetType());
+                    settings = serializer.Deserialize(reader) as Settings;
+                    BackColor = Color.FromArgb(settings.MainFormColor);
+                }
             }
-            EnabledCheck();
+            catch(Exception)
+            {
+
+            }
+            finally 
+            {
+                EnabledCheck();//マスク処理
+            }
         }
 
         private void btAddPerson_Click(object sender, EventArgs e) 
@@ -117,10 +126,8 @@ namespace CarReportSystem
             {
                 return CarReport.MakerGroup.外国車;
             }
-            if (rbOther.Checked) 
-            {
                 return CarReport.MakerGroup.その他;
-            }
+
         }
 
         private void btUpdate_Click(object sender, EventArgs e) 
