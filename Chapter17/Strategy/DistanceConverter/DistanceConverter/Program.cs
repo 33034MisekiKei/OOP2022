@@ -1,10 +1,11 @@
-﻿using System;
+﻿using DistanceConverter.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DistanceConverter {
+namespace DistanceConverter.Framework {
     class Program {
         static void Main(string[] args) {
             while (true) 

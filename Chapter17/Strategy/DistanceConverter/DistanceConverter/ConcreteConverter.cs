@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DistanceConverter.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,7 +40,7 @@ namespace DistanceConverter {
     }
 
     public class MileConverter : ConverterBase {
-        protected override double Ratio => 1.6093;
+        protected override double Ratio => 1609.34;
         public override string UnitName => "マイル";
         public override bool IsMyUnit(string name) {
             return name.ToLower() == "yard" || name == UnitName;
