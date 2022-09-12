@@ -32,12 +32,24 @@ namespace AddressBook {
         }
 
         private void addressTableDataGridView_Click(object sender, EventArgs e) {
+            if (addressTableDataGridView.CurrentRow == null)
+                return;
+
             //データグリッドビューの選択レコードを各テキストボックスへ
             tbName.Text = addressTableDataGridView.CurrentRow.Cells[1].Value.ToString();
             tbAddress.Text = addressTableDataGridView.CurrentRow.Cells[2].Value.ToString();
             tbTel.Text = addressTableDataGridView.CurrentRow.Cells[3].Value.ToString();
             tbMail.Text = addressTableDataGridView.CurrentRow.Cells[4].Value.ToString();
             tbMemo.Text = addressTableDataGridView.CurrentRow.Cells[5].Value.ToString();
+
+            //画像表示処理
+            if (!(addressTableDataGridView.CurrentRow.Cells[6].Value is DBNull))
+                pbImage.Image = ByteArrayToImage((byte[])addressTableDataGridView.CurrentRow.Cells[6].Value);
+            else
+                pbImage.Image = null;
+
+            //if(!DBNull.Value.Equals(addressTableDataGridView.CurrentRow.Cells[6].Value))
+            //    pbImage.Image = ByteArrayToImage((byte[])addressTableDataGridView.CurrentRow.Cells[6].Value);
         }
 
         private void btUpdate_Click(object sender, EventArgs e) {
@@ -48,6 +60,7 @@ namespace AddressBook {
             addressTableDataGridView.CurrentRow.Cells[4].Value = tbMail.Text;
             addressTableDataGridView.CurrentRow.Cells[5].Value = tbMemo.Text;
             addressTableDataGridView.CurrentRow.Cells[6].Value = ImageToByteArray(pbImage.Image);
+
             //データセットの中をデータベースへ反映（保存）
             this.Validate();
             this.addressTableBindingSource.EndEdit();
@@ -55,7 +68,8 @@ namespace AddressBook {
         }
 
         private void tbImageOpen_Click(object sender, EventArgs e) {
-            if(ofdImage.ShowDialog() == DialogResult.OK) 
+            ofdImage.Filter = "画像ファイル(*.jpg; *.png; *.bmp)| *.jpg; *.png; *.bmp";
+            if (ofdImage.ShowDialog() == DialogResult.OK) 
             {
                 pbImage.Image = System.Drawing.Image.FromFile(ofdImage.FileName);
             }
@@ -63,6 +77,7 @@ namespace AddressBook {
 
         private void btImageClear_Click(object sender, EventArgs e) {
             pbImage.Image = null;
+            
 
         }
 
@@ -80,5 +95,34 @@ namespace AddressBook {
             return b;
         }
 
+        private void btAdd_Click(object sender, EventArgs e) {
+            DataRow newRow = infosys202204DataSet.AddressTable.NewRow();
+            newRow[1] = tbName.Text;
+            newRow[2] = tbAddress.Text;
+            newRow[3] = tbTel.Text;
+            newRow[4] = tbMail.Text;
+            newRow[5] = tbMemo.Text;
+            //データセットへ新しいレコードを追加
+            infosys202204DataSet.AddressTable.Rows.Add(newRow);
+            //データベース更新
+            this.addressTableTableAdapter.Update(this.infosys202204DataSet.AddressTable);
+        }
+
+        //エラー回避
+        private void addressTableDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e) {
+
+        }
+
+        private void btNameSearch_Click(object sender, EventArgs e) {
+            addressTableTableAdapter.FillByName(infosys202204DataSet.AddressTable, btNameSearch.Text);
+        }
+
+        private void 接続ToolStripMenuItem_Click(object sender, EventArgs e) {
+            this.addressTableTableAdapter.Fill(this.infosys202204DataSet.AddressTable);
+        }
+
+        private void バージョン情報ToolStripMenuItem_Click(object sender, EventArgs e) {
+            //new Version().ShowDialog();
+        }
     }
 }
