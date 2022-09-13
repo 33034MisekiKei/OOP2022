@@ -16,6 +16,28 @@ namespace CarReportSystem
 {
     public partial class Form1 : Form 
     {
+        private void carReportDBDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+            this.Validate();
+            this.carReportDBDataGridView.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.infosys202204DataSet);
+        }
+
+        // バイト配列をImageオブジェクトに変換
+        public static Image ByteArrayToImage(byte[] b) {
+            ImageConverter imgconv = new ImageConverter();
+            Image img = (Image)imgconv.ConvertFrom(b);
+            return img;
+        }
+
+        // Imageオブジェクトをバイト配列に変換
+        public static byte[] ImageToByteArray(Image img) {
+            ImageConverter imgconv = new ImageConverter();
+            byte[] b = (byte[])imgconv.ConvertTo(img, typeof(byte[]));
+            return b;
+        }
+
+
+
         //設定情報保存用オブジェクト
         Settings settings = Settings.getInstance();
 
@@ -60,6 +82,8 @@ namespace CarReportSystem
         }
 
         private void Form1_Load_1(object sender, EventArgs e) {
+            // TODO: このコード行はデータを 'infosys202204DataSet.CarReportDB' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
+            this.carReportDBTableAdapter.Fill(this.infosys202204DataSet.CarReportDB);
             try {
                 //設定ファイルを逆シリアル化して背景の色に設定
                 using (var reader = XmlReader.Create("settings.xml")) 
@@ -101,6 +125,17 @@ namespace CarReportSystem
             //EnabledCheck(); //マスク処理呼び出し
             setCbAuther(cbAuther.Text);
             setCbCarName(cbCarName.Text);
+
+            DataRow newRow = infosys202204DataSet.AddressTable.NewRow();
+            newRow[1] = dtpDate.Text;
+            newRow[2] = cbAuther.Text;
+            newRow[3] = cbCarName.Text;
+            newRow[4] = tbReport.Text;
+            newRow[5] = pbPicture.Text;
+            //データセットへ新しいレコードを追加
+            infosys202204DataSet.AddressTable.Rows.Add(newRow);
+            //データベース更新
+            //this.tableAdapterManager.Update(this.infosys202204DataSet.CarReportDB);
         }
 
         //チェックボックスにセットされている値をリストとして取り出す
@@ -235,5 +270,14 @@ namespace CarReportSystem
                 }
             }
         }
+
+        private void carReportDBBindingNavigatorSaveItem_Click(object sender, EventArgs e) {
+            this.Validate();
+            this.carReportDBBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.infosys202204DataSet);
+
+        }
+
+        
     }
 }
