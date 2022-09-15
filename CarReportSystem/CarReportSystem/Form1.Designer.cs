@@ -47,7 +47,6 @@ namespace CarReportSystem {
             this.btAddPerson = new System.Windows.Forms.Button();
             this.btUpdate = new System.Windows.Forms.Button();
             this.btDelete = new System.Windows.Forms.Button();
-            this.dgvPersons = new System.Windows.Forms.DataGridView();
             this.btOpen = new System.Windows.Forms.Button();
             this.btSave = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
@@ -59,6 +58,7 @@ namespace CarReportSystem {
             this.btSaveReport = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ファイルToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.設定ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infosys202204DataSet = new CarReportSystem.infosys202204DataSet();
             this.carReportDBBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.carReportDBTableAdapter = new CarReportSystem.infosys202204DataSetTableAdapters.CarReportDBTableAdapter();
@@ -77,7 +77,6 @@ namespace CarReportSystem {
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.carReportDBBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.carReportDBDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,7 +84,6 @@ namespace CarReportSystem {
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPersons)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.infosys202204DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.carReportDBBindingSource)).BeginInit();
@@ -305,19 +303,6 @@ namespace CarReportSystem {
             this.btDelete.Text = "削除";
             this.btDelete.UseVisualStyleBackColor = true;
             // 
-            // dgvPersons
-            // 
-            this.dgvPersons.AllowUserToDeleteRows = false;
-            this.dgvPersons.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPersons.Location = new System.Drawing.Point(111, 366);
-            this.dgvPersons.MultiSelect = false;
-            this.dgvPersons.Name = "dgvPersons";
-            this.dgvPersons.ReadOnly = true;
-            this.dgvPersons.RowTemplate.Height = 21;
-            this.dgvPersons.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPersons.Size = new System.Drawing.Size(616, 157);
-            this.dgvPersons.TabIndex = 13;
-            // 
             // btOpen
             // 
             this.btOpen.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
@@ -391,9 +376,18 @@ namespace CarReportSystem {
             // 
             // ファイルToolStripMenuItem
             // 
+            this.ファイルToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.設定ToolStripMenuItem});
             this.ファイルToolStripMenuItem.Name = "ファイルToolStripMenuItem";
             this.ファイルToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.ファイルToolStripMenuItem.Text = "ファイル(F)";
+            // 
+            // 設定ToolStripMenuItem
+            // 
+            this.設定ToolStripMenuItem.Name = "設定ToolStripMenuItem";
+            this.設定ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.設定ToolStripMenuItem.Text = "設定";
+            this.設定ToolStripMenuItem.Click += new System.EventHandler(this.設定ToolStripMenuItem_Click_1);
             // 
             // infosys202204DataSet
             // 
@@ -548,7 +542,6 @@ namespace CarReportSystem {
             this.carReportDBDataGridView.AutoGenerateColumns = false;
             this.carReportDBDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.carReportDBDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
@@ -556,19 +549,12 @@ namespace CarReportSystem {
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewImageColumn1});
             this.carReportDBDataGridView.DataSource = this.carReportDBBindingSource;
-            this.carReportDBDataGridView.Location = new System.Drawing.Point(33, 544);
+            this.carReportDBDataGridView.Location = new System.Drawing.Point(89, 382);
             this.carReportDBDataGridView.Name = "carReportDBDataGridView";
             this.carReportDBDataGridView.RowTemplate.Height = 21;
-            this.carReportDBDataGridView.Size = new System.Drawing.Size(743, 220);
+            this.carReportDBDataGridView.Size = new System.Drawing.Size(650, 220);
             this.carReportDBDataGridView.TabIndex = 30;
             this.carReportDBDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.carReportDBDataGridView_CellContentClick);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Id";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -617,7 +603,6 @@ namespace CarReportSystem {
             this.Controls.Add(this.tbReport);
             this.Controls.Add(this.btSave);
             this.Controls.Add(this.btOpen);
-            this.Controls.Add(this.dgvPersons);
             this.Controls.Add(this.btDelete);
             this.Controls.Add(this.btUpdate);
             this.Controls.Add(this.btAddPerson);
@@ -647,7 +632,6 @@ namespace CarReportSystem {
             this.Text = "試乗レポート管理システム";
             this.Load += new System.EventHandler(this.Form1_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPersons)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.infosys202204DataSet)).EndInit();
@@ -684,7 +668,6 @@ namespace CarReportSystem {
         private System.Windows.Forms.Button btAddPerson;
         private System.Windows.Forms.Button btUpdate;
         private System.Windows.Forms.Button btDelete;
-        private System.Windows.Forms.DataGridView dgvPersons;
         private System.Windows.Forms.Button btOpen;
         private System.Windows.Forms.Button btSave;
         private System.Windows.Forms.Label label7;
@@ -714,13 +697,13 @@ namespace CarReportSystem {
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton carReportDBBindingNavigatorSaveItem;
         private System.Windows.Forms.DataGridView carReportDBDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.ToolStripMenuItem 設定ToolStripMenuItem;
     }
 }
 
