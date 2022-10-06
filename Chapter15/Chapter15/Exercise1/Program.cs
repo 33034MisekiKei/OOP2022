@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Exercise1 {
     class Program {
         static void Main(string[] args) {
-            Exercise1_2();
+        //    Exercise1_2();
             Console.WriteLine();
             Exercise1_3();
             Console.WriteLine();
@@ -31,7 +31,12 @@ namespace Exercise1 {
         }
 
         private static void Exercise1_3() {
-            
+            var query = Library.Books.GroupBy(b => b.PublishedYear);
+
+            foreach(var item in query.OrderBy(b=>b.Key)) 
+            {
+                Console.WriteLine("{0}年{1}冊",item.Key, item.Count());
+            }
         }
 
         private static void Exercise1_4() {
