@@ -51,8 +51,7 @@ namespace Chapter15 {
             //    .OrderBy(g => g.Key);
 
             var selected = Library.Books
-                .OrderBy(b => b.Category)
-                .ThenBy(b => b.PublishedYear)
+                .Where(b => years.Contains(b.PublishedYear))
                 .Join(Library.Categories        //結合する2番目のシーケンス
                     ,book => book.Category      //対象シーケンスの結合キー
                     ,category => category.Id    //2番目のシーケンスの結合キー
@@ -61,11 +60,11 @@ namespace Chapter15 {
                         ,Category = category.Name
                         ,PublishedYear = book.PublishedYear});
 
-            foreach (var book in books) 
+            foreach (var book in selected
+                .OrderByDescending(x => x.PublishedYear)
+                .ThenBy(x => x.Category))
             {
-                //Console.WriteLine($"{book.PublishedYear}年");
-                //var category = Library.Categories.Where(b => b.Id == book.CategoryId).First();
-                Console.WriteLine($"{book.Title} {book.Category} {book.PublishedYear}");
+                Console.WriteLine($"{book.PublishedYear} {book.Title} {book.Category}");
             }
         }
     }
