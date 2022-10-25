@@ -42,7 +42,7 @@ namespace CarReportSystem
         Settings settings = Settings.getInstance();
 
         //カーレポート管理用リスト
-        //BindingList<CarReport> listCarReports = new BindingList<CarReport>();
+        BindingList<CarReport> listCarReports = new BindingList<CarReport>();
 
         int mode = 0;
         public Form1() 
@@ -96,9 +96,6 @@ namespace CarReportSystem
             {
 
             }
-            finally 
-            {
-            }
         }
 
         private void btAddPerson_Click(object sender, EventArgs e) 
@@ -109,7 +106,7 @@ namespace CarReportSystem
                 return;
             }
 
-            /*CarReport carReport = new CarReport 
+            CarReport carReport = new CarReport 
             {
                 Date = dtpDate.Value,
                 Auther = cbAuther.Text,
@@ -117,7 +114,7 @@ namespace CarReportSystem
                 Report = tbReport.Text,
                 Picture = pbPicture.Image,
             };
-            */
+            listCarReports.Add(carReport);
 
             //EnabledCheck(); //マスク処理呼び出し
             setCbAuther(cbAuther.Text);
@@ -170,6 +167,7 @@ namespace CarReportSystem
             carReportDBDataGridView.CurrentRow.Cells[4].Value = GetRadioButtonMaker();
             carReportDBDataGridView.CurrentRow.Cells[5].Value = GetRadioButtonMaker();
         }
+
 
         //コンボボックスに記録者を登録する（重複なし）
         private void setCbAuther(string company) 
@@ -251,13 +249,14 @@ namespace CarReportSystem
                 case "その他":
                     rbNissan.Checked = true;
                     break;
-
-
-
             }
-
         }
 
-        
+        private void 接続ToolStripMenuItem_Click(object sender, EventArgs e) {
+            this.Validate();
+            this.carReportDBBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.infosys202204DataSet);
+        }
+    }
     }
 }
