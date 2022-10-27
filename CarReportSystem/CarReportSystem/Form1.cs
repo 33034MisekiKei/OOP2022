@@ -133,29 +133,30 @@ namespace CarReportSystem
         }
 
         //チェックボックスにセットされている値をリストとして取り出す
-        private string GetRadioButtonMaker() 
+        private CarReport.MakerGroup GetRadioButtonMaker() 
         {
             if (rbToyota.Checked) 
             {
-                return "トヨタ";
+                return CarReport.MakerGroup.トヨタ;
             }
             if (rbNissan.Checked) 
             {
-                return "日産";
+                return CarReport.MakerGroup.日産;
             }
             if (rbHonda.Checked) 
             {
-                return "ホンダ";
+                return CarReport.MakerGroup.ホンダ;
             }
             if (rbSubaru.Checked) 
             {
-                return "スバル";
+                return CarReport.MakerGroup.スバル;
             }
             if (rbGaisha.Checked) 
             {
-                return "外国車";
+                return CarReport.MakerGroup.外国車;
             }
-                return "その他";
+
+            return CarReport.MakerGroup.その他;
 
         }
 
@@ -211,7 +212,7 @@ namespace CarReportSystem
             
         }
 
-        private void carReportDBBindingNavigatorSaveItem_Click(object sender, EventArgs e) {
+        private void CarReportDBBindingNavigatorSaveItem_Click(object sender, EventArgs e) {
             this.Validate();
             this.carReportDBBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.infosys202204DataSet);
@@ -252,11 +253,16 @@ namespace CarReportSystem
             }
         }
 
+        private void carReportDBBindingNavigatorSaveItem_Click(object sender, EventArgs e) {
+            this.Validate();
+            this.carReportDBBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.infosys202204DataSet);
+        }
+
         private void 接続ToolStripMenuItem_Click(object sender, EventArgs e) {
             this.Validate();
             this.carReportDBBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.infosys202204DataSet);
         }
-    }
     }
 }

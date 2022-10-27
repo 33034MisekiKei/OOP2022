@@ -59,6 +59,7 @@ namespace CarReportSystem {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ファイルToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.設定ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.接続ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infosys202204DataSet = new CarReportSystem.infosys202204DataSet();
             this.carReportDBBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.carReportDBTableAdapter = new CarReportSystem.infosys202204DataSetTableAdapters.CarReportDBTableAdapter();
@@ -83,7 +84,6 @@ namespace CarReportSystem {
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.接続ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.infosys202204DataSet)).BeginInit();
@@ -391,6 +391,14 @@ namespace CarReportSystem {
             this.設定ToolStripMenuItem.Text = "設定";
             this.設定ToolStripMenuItem.Click += new System.EventHandler(this.設定ToolStripMenuItem_Click_1);
             // 
+            // 接続ToolStripMenuItem
+            // 
+            this.接続ToolStripMenuItem.Name = "接続ToolStripMenuItem";
+            this.接続ToolStripMenuItem.ShowShortcutKeys = false;
+            this.接続ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.接続ToolStripMenuItem.Text = "接続";
+            this.接続ToolStripMenuItem.Click += new System.EventHandler(this.接続ToolStripMenuItem_Click);
+            // 
             // infosys202204DataSet
             // 
             this.infosys202204DataSet.DataSetName = "infosys202204DataSet";
@@ -593,13 +601,6 @@ namespace CarReportSystem {
             this.dataGridViewImageColumn1.DataPropertyName = "Image";
             this.dataGridViewImageColumn1.HeaderText = "Image";
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            // 
-            // 接続ToolStripMenuItem
-            // 
-            this.接続ToolStripMenuItem.Name = "接続ToolStripMenuItem";
-            this.接続ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.接続ToolStripMenuItem.Text = "接続";
-            this.接続ToolStripMenuItem.Click += new System.EventHandler(this.接続ToolStripMenuItem_Click);
             // 
             // Form1
             // 
