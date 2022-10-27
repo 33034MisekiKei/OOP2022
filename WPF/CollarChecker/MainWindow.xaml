@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CollarChecker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="500" FontSize="20">
+        Title="MainWindow" Height="300" Width="500" FontSize="15" FontFamily="Segoe Light">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -14,26 +14,48 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <Label x:Name="colorArea" Grid.Row="0" Grid.Column="0" Background="AliceBlue" Margin="30"/>
+        <Grid Grid.Column="1" Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="R" Margin="3,30,3,3" HorizontalAlignment="Right"/>
+            <Slider x:Name="rSlider" Grid.Row="0" Grid.Column="1" Margin="3,30,3,3"/>
+            <TextBox x:Name="rValue" Grid.Row="0" Grid.Column="2" Margin="3,30,3,3"/>
 
-        <Label x:Name="BS" Grid.Row="0" Grid.Column="0" Background="AliceBlue" Margin="25"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="G" Margin="3,30,3,3" HorizontalAlignment="Right"/>
+            <Slider x:Name="gSlider" Grid.Row="1" Grid.Column="1" Margin="3,30,3,3"/>
+            <TextBox x:Name="gValue" Grid.Row="1" Grid.Column="2" Margin="3,30,3,3"/>
 
-        <StackPanel Grid.Column="1" Grid.Row="0">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="R" Margin="3"/>
-                <Slider x:Name="rSlider" Width="150" Margin="3"/>
-                <TextBox x:Name="rValue" Width="60" Margin="3"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="G" Margin="3"/>
-                <Slider x:Name="gSlider" Width="150" Margin="3"/>
-                <TextBox x:Name="gValue" Width="60" Margin="3"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="B" Margin="3"/>
-                <Slider x:Name="bSlider" Width="150" Margin="3"/>
-                <TextBox x:Name="bValue" Width="60" Margin="3"/>
-            </StackPanel>
-        </StackPanel>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="B" Margin="3,30,3,3" HorizontalAlignment="Right"/>
+            <Slider x:Name="bSlider" Grid.Row="2" Grid.Column="1" Margin="3,30,3,3"/>
+            <TextBox x:Name="bValue" Grid.Row="2" Grid.Column="2" Margin="3,30,3,3"/>
+
+            <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding}" SelectedValue="{Binding Color}" Margin="3,30,3,3" Height="24" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="155">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Border Width="20" Height="Auto" Margin="5,0" BorderThickness="1" BorderBrush="Black">
+                                <Border.Background>
+                                    <SolidColorBrush Color="{Binding Color}"/>
+                                </Border.Background>
+                            </Border>
+                            <TextBlock Text="{Binding Name}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </Grid>
+        
     </Grid>
 
 </Window>
