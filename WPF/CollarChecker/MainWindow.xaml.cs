@@ -21,7 +21,7 @@ namespace CollarChecker {
             InitializeComponent();
 
             DataContext = GetColorList(); //←追加
-
+            
         }
 
         /// <summary>
@@ -32,9 +32,17 @@ namespace CollarChecker {
             return typeof(Colors).GetProperties(BindingFlags.Public | BindingFlags.Static)
                 .Select(i => new MyColor() { Color = (Color)i.GetValue(null), Name = i.Name }).ToArray();
         }
+        
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
+            var r = byte.Parse(rValue.Text.ToString());
+            var g = byte.Parse(rValue.Text.ToString());
+            var b = byte.Parse(rValue.Text.ToString());
 
+            colorArea.Background = new SolidColorBrush(Color.FromRgb(r, g, b));
         }
+
+
+        
 
     }
 
