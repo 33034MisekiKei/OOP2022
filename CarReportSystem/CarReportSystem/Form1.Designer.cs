@@ -387,7 +387,7 @@ namespace CarReportSystem {
             // 設定ToolStripMenuItem
             // 
             this.設定ToolStripMenuItem.Name = "設定ToolStripMenuItem";
-            this.設定ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.設定ToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this.設定ToolStripMenuItem.Text = "設定";
             this.設定ToolStripMenuItem.Click += new System.EventHandler(this.設定ToolStripMenuItem_Click_1);
             // 
@@ -395,7 +395,7 @@ namespace CarReportSystem {
             // 
             this.接続ToolStripMenuItem.Name = "接続ToolStripMenuItem";
             this.接続ToolStripMenuItem.ShowShortcutKeys = false;
-            this.接続ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.接続ToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this.接続ToolStripMenuItem.Text = "接続";
             this.接続ToolStripMenuItem.Click += new System.EventHandler(this.接続ToolStripMenuItem_Click);
             // 
@@ -564,7 +564,6 @@ namespace CarReportSystem {
             this.carReportDBDataGridView.RowTemplate.Height = 21;
             this.carReportDBDataGridView.Size = new System.Drawing.Size(650, 220);
             this.carReportDBDataGridView.TabIndex = 30;
-            this.carReportDBDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.carReportDBDataGridView_CellContentClick);
             // 
             // dataGridViewTextBoxColumn2
             // 

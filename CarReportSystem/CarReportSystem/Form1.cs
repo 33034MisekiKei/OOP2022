@@ -16,11 +16,7 @@ namespace CarReportSystem
 {
     public partial class Form1 : Form 
     {
-        private void carReportDBDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e) {
-            this.Validate();
-            this.carReportDBDataGridView.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.infosys202204DataSet);
-        }
+        
 
         // バイト配列をImageオブジェクトに変換
         public static Image ByteArrayToImage(byte[] b) {
@@ -96,13 +92,14 @@ namespace CarReportSystem
             {
 
             }
+
         }
 
         private void btAddPerson_Click(object sender, EventArgs e) 
         {
-            if (String.IsNullOrWhiteSpace(cbAuther.Text)) 
-            {
-                MessageBox.Show("記録者を入力してください");
+            //氏名が未入力なら登録しない
+            if (String.IsNullOrWhiteSpace(cbAuther.Text)) {
+                MessageBox.Show("氏名が入力されていません");
                 return;
             }
 
@@ -129,7 +126,9 @@ namespace CarReportSystem
             //データセットへ新しいレコードを追加
             infosys202204DataSet.AddressTable.Rows.Add(newRow);
             //データベース更新
-            //this.tableAdapterManager.Update(this.infosys202204DataSet.CarReportDB);
+            this.Validate();
+            this.carReportDBBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.infosys202204DataSet);
         }
 
         //チェックボックスにセットされている値をリストとして取り出す
@@ -260,9 +259,9 @@ namespace CarReportSystem
         }
 
         private void 接続ToolStripMenuItem_Click(object sender, EventArgs e) {
-            this.Validate();
-            this.carReportDBBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.infosys202204DataSet);
+            this.carReportDBTableAdapter.Fill(this.infosys202204DataSet.CarReportDB);
+
+
         }
     }
 }
