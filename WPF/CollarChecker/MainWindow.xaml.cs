@@ -20,8 +20,7 @@ namespace CollarChecker {
         public MainWindow() {
             InitializeComponent();
 
-            DataContext = GetColorList(); //←追加
-            
+            DataContext = GetColorList(); //←追加          
         }
 
         /// <summary>
@@ -59,7 +58,7 @@ namespace CollarChecker {
         }
 
         private void stockButton_Click(object sender, RoutedEventArgs e) {
-
+            
         }
 
     }

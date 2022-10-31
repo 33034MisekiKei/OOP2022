@@ -64,8 +64,9 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="stockButton" Grid.Row="0" Content="STOCK" FontSize="20" Margin="10.5" Click="stockButton_Click"/>
-            <ListBox x:Name="stockList" Grid.Row="1"/>
+            <Button x:Name="stockButton" Grid.Row="0" Content="STOCK" FontSize="20" Margin="10,10,145,5" Click="stockButton_Click"/>
+            
+            <ListBox x:Name="stockList" Grid.Row="1" Margin="10"/>
         </Grid>
     </Grid>
 </Window>
