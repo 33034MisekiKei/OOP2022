@@ -293,6 +293,7 @@ namespace CarReportSystem {
             this.btUpdate.TabIndex = 11;
             this.btUpdate.Text = "更新";
             this.btUpdate.UseVisualStyleBackColor = true;
+            this.btUpdate.Click += new System.EventHandler(this.btUpdate_Click_1);
             // 
             // btDelete
             // 

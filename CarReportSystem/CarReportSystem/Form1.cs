@@ -17,7 +17,6 @@ namespace CarReportSystem
     public partial class Form1 : Form 
     {
         
-
         // バイト配列をImageオブジェクトに変換
         public static Image ByteArrayToImage(byte[] b) {
             ImageConverter imgconv = new ImageConverter();
@@ -31,8 +30,6 @@ namespace CarReportSystem
             byte[] b = (byte[])imgconv.ConvertTo(img, typeof(byte[]));
             return b;
         }
-
-
 
         //設定情報保存用オブジェクト
         Settings settings = Settings.getInstance();
@@ -117,14 +114,14 @@ namespace CarReportSystem
             setCbAuther(cbAuther.Text);
             setCbCarName(cbCarName.Text);
 
-            DataRow newRow = infosys202204DataSet.AddressTable.NewRow();
+            DataRow newRow = infosys202204DataSet.CarReportDB.NewRow();
             newRow[1] = dtpDate.Text;
             newRow[2] = cbAuther.Text;
             newRow[3] = cbCarName.Text;
             newRow[4] = tbReport.Text;
             newRow[5] = pbPicture.Text;
             //データセットへ新しいレコードを追加
-            infosys202204DataSet.AddressTable.Rows.Add(newRow);
+            infosys202204DataSet.CarReportDB.Rows.Add(newRow);
             //データベース更新
             this.Validate();
             this.carReportDBBindingSource.EndEdit();
@@ -262,6 +259,18 @@ namespace CarReportSystem
             this.carReportDBTableAdapter.Fill(this.infosys202204DataSet.CarReportDB);
 
 
+        }
+
+        private void btUpdate_Click_1(object sender, EventArgs e) {
+            carReportDBDataGridView.CurrentRow.Cells[1].Value = GetRadioButtonMaker();
+            carReportDBDataGridView.CurrentRow.Cells[2].Value = GetRadioButtonMaker();
+            carReportDBDataGridView.CurrentRow.Cells[3].Value = GetRadioButtonMaker();
+            carReportDBDataGridView.CurrentRow.Cells[4].Value = GetRadioButtonMaker();
+            carReportDBDataGridView.CurrentRow.Cells[5].Value = GetRadioButtonMaker();
+        }
+
+        private void btDelete_Click(object sender, EventArgs e) {
+            this.carReportDBTableAdapter.Fill(this.infosys202204DataSet.CarReportDB);
         }
     }
 }
