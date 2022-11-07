@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CollarChecker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="700" FontSize="15" FontFamily="Segoe Light">
+        Title="MainWindow" Height="300" Width="700" FontSize="15" FontFamily="Segoe Light" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -15,7 +15,8 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Label x:Name="colorArea" Grid.Row="0" Grid.Column="0" Background="AliceBlue" Margin="30"/>
+        <Label x:Name="colorArea" Grid.Row="0" Grid.Column="0" Background="AliceBlue" Margin="20"/>
+
         <Grid Grid.Column="1" Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -41,7 +42,8 @@
             <Slider x:Name="bSlider" Grid.Row="2" Grid.Column="1" Margin="3,30,3,3" TickPlacement="TopLeft" TickFrequency="50" Minimum="0" Maximum="255" ValueChanged="Slider_ValueChanged"/>
             <TextBox x:Name="bValue" Grid.Row="2" Grid.Column="2" Margin="3,30,3,3" Text="{Binding ElementName=bSlider, Path=Value, StringFormat={} {0:N0}}"/>
 
-            <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding}" SelectedValue="{Binding Color}" Margin="2,30,0,0" Height="24" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="150">
+            <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding}" SelectedValue="{Binding Color}" Margin="2,30,0,0" Height="24" VerticalAlignment="Top" 
+                      VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="150" SelectionChanged="ComboBox_SelectionChanged">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -65,8 +67,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Button x:Name="stockButton" Grid.Row="0" Content="STOCK" FontSize="20" Margin="10,10,145,5" Click="stockButton_Click"/>
-            
-            <ListBox x:Name="stockList" Grid.Row="1" Margin="10"/>
+            <ListBox x:Name="stockList" Grid.Row="1" Margin="10" FontSize="20" SelectionChanged="stockList_SelectionChanged"/>
         </Grid>
     </Grid>
 </Window>
