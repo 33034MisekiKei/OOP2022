@@ -67,9 +67,9 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="stockButton" Grid.Row="0" Content="STOCK" FontSize="20" Margin="10,10,145,5" Click="stockButton_Click"/>
+            <Button x:Name="stockButton" Grid.Row="0" Content="STOCK" FontSize="20" Margin="10,10,10,5" Click="stockButton_Click" Grid.Column="0"/>
+            <Button x:Name="deleteButton" Grid.Row="0" Content="DELETE" FontSize="20" Margin="10,10,10,5" Click="deleteButton_Click" Grid.Column="1"/>
             <ListBox x:Name="stockList" Grid.Row="1" Margin="10" FontSize="20" SelectionChanged="stockList_SelectionChanged" Grid.ColumnSpan="2"/>
-            <Button x:Name="deleteButton" Grid.Row="0" Content="DELETE" FontSize="20" Margin="145,10,10,5" Click="deleteButton_Click"/>
         </Grid>
     </Grid>
 </Window>

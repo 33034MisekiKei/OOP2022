@@ -61,7 +61,7 @@ namespace CollarChecker {
             bSlider.Value = mycolor.Color.B;
             //setColor();
         }
-
+        //ストックボタンクリック
         private void stockButton_Click(object sender, RoutedEventArgs e) {
 
             MyColor stColor = new MyColor();
@@ -84,21 +84,28 @@ namespace CollarChecker {
             colorList.Add(stColor);
             //GetColorList.Add(stColor);
         }
-
+        //デリートボタンクリック
         private void deleteButton_Click(object sender, RoutedEventArgs e) {
-            //stockList
-            //colorList
+
+            //stockList.Items.RemoveAt(stockList.SelectedIndex);
+            //colorList.Remove((MyColor)stockList.SelectedIndex);
+
+            var dellndex = stockList.SelectedIndex;
+            if (dellndex == -1) return;
+
+            stockList.Items.RemoveAt(dellndex);
+            colorList.RemoveAt(dellndex);
         }
 
-
         private void stockList_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            if (stockList.SelectedIndex == -1) return;
+
             rSlider.Value = colorList[stockList.SelectedIndex].Color.R;
             gSlider.Value = colorList[stockList.SelectedIndex].Color.G;
             bSlider.Value = colorList[stockList.SelectedIndex].Color.B;
             setColor();
-        }
 
-        
+        }
     }
 
     /// <summary>
