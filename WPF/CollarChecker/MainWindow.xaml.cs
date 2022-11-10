@@ -85,12 +85,20 @@ namespace CollarChecker {
             //GetColorList.Add(stColor);
         }
 
+        private void deleteButton_Click(object sender, RoutedEventArgs e) {
+            //stockList
+            //colorList
+        }
+
+
         private void stockList_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             rSlider.Value = colorList[stockList.SelectedIndex].Color.R;
             gSlider.Value = colorList[stockList.SelectedIndex].Color.G;
             bSlider.Value = colorList[stockList.SelectedIndex].Color.B;
             setColor();
         }
+
+        
     }
 
     /// <summary>
