@@ -113,4 +113,15 @@ namespace WeatherApp {
         public string[] ft48 { get; set; }
     }
 
+
+
+
+    public class Rootobject2 {
+        public string publishingOffice { get; set; }
+        public DateTime reportDatetime { get; set; }
+        public string targetArea { get; set; }
+        public string headlineText { get; set; }
+        public string text { get; set; }
+    }
+
 }

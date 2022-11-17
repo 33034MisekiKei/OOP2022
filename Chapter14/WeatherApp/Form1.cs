@@ -24,19 +24,36 @@ namespace WeatherApp {
             };
 
             var dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/130000.json");
-            var bString = wc.DownloadString("https://www.jma.go.jp/bosai/weather_map/data/png/20221116185030_0_Z__C_010000_20221116120000_MET_CHT_JCIfsas24_Rjp_JCP600x581_JRcolor_Tjmahp_image.png");
 
             var json = JsonConvert.DeserializeObject<Class1[]>(dString);
-            var Near = JsonConvert.DeserializeObject<Near[]>(bString);
-
 
             name.Text = json[0].timeSeries[0].areas[1].area.name;
             weathers.Text = json[0].timeSeries[0].areas[0].weathers[0];
             winds.Text = json[0].timeSeries[0].areas[0].winds[0];
             waves.Text = json[0].timeSeries[0].areas[0].waves[0];
-
-            tbWeatherInfo.Text = Near[0].ft24[0];
             
+            pbImage.ImageLocation = "https://www.jma.go.jp/bosai/forecast/img/101.png";
+
+
+            //var String = wc.DownloadString("https://www.jma.go.jp/bosai/weather_map/data/png/20221116185030_0_Z__C_010000_20221116120000_MET_CHT_JCIfsas24_Rjp_JCP600x581_JRcolor_Tjmahp_image.png");
+
+            //var Near = JsonConvert.DeserializeObject<Near[]>(String);
+
+            //tbWeatherInfo.Text = Near[0].ft24[0];
+
+
+            var now = DateTimeOffset.Now;
+
+            tbWeatherInfo.Text = now.ToString();
+            tbWeatherInfo.Text += "\r\n";
+
+            var utc = now.ToUniversalTime();
+            tbWeatherInfo.Text += utc.ToString();
+            tbWeatherInfo.Text += "\r\n";
+
+            var localTime = now.ToLocalTime();
+            tbWeatherInfo.Text += localTime.ToString();
+
         }
     }
 }

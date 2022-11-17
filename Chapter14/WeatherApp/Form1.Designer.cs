@@ -35,6 +35,8 @@ namespace WeatherApp {
             this.winds = new System.Windows.Forms.TextBox();
             this.weathers = new System.Windows.Forms.TextBox();
             this.name = new System.Windows.Forms.TextBox();
+            this.pbImage = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.SuspendLayout();
             // 
             // btWeatherGet
@@ -112,7 +114,7 @@ namespace WeatherApp {
             this.waves.Location = new System.Drawing.Point(133, 170);
             this.waves.Multiline = true;
             this.waves.Name = "waves";
-            this.waves.Size = new System.Drawing.Size(345, 24);
+            this.waves.Size = new System.Drawing.Size(362, 24);
             this.waves.TabIndex = 2;
             // 
             // winds
@@ -121,16 +123,16 @@ namespace WeatherApp {
             this.winds.Location = new System.Drawing.Point(133, 136);
             this.winds.Multiline = true;
             this.winds.Name = "winds";
-            this.winds.Size = new System.Drawing.Size(345, 24);
+            this.winds.Size = new System.Drawing.Size(362, 24);
             this.winds.TabIndex = 2;
             // 
             // weathers
             // 
             this.weathers.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.weathers.Location = new System.Drawing.Point(133, 106);
+            this.weathers.Location = new System.Drawing.Point(133, 102);
             this.weathers.Multiline = true;
             this.weathers.Name = "weathers";
-            this.weathers.Size = new System.Drawing.Size(345, 24);
+            this.weathers.Size = new System.Drawing.Size(362, 28);
             this.weathers.TabIndex = 2;
             // 
             // name
@@ -139,14 +141,23 @@ namespace WeatherApp {
             this.name.Location = new System.Drawing.Point(133, 72);
             this.name.Multiline = true;
             this.name.Name = "name";
-            this.name.Size = new System.Drawing.Size(345, 24);
+            this.name.Size = new System.Drawing.Size(362, 24);
             this.name.TabIndex = 2;
+            // 
+            // pbImage
+            // 
+            this.pbImage.Location = new System.Drawing.Point(501, 93);
+            this.pbImage.Name = "pbImage";
+            this.pbImage.Size = new System.Drawing.Size(99, 50);
+            this.pbImage.TabIndex = 5;
+            this.pbImage.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(693, 423);
+            this.Controls.Add(this.pbImage);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
@@ -160,6 +171,7 @@ namespace WeatherApp {
             this.Controls.Add(this.btWeatherGet);
             this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -178,6 +190,7 @@ namespace WeatherApp {
         private System.Windows.Forms.TextBox winds;
         private System.Windows.Forms.TextBox weathers;
         private System.Windows.Forms.TextBox name;
+        private System.Windows.Forms.PictureBox pbImage;
     }
 }
 
