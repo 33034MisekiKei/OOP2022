@@ -31,9 +31,9 @@ namespace WeatherApp {
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.parent = new System.Windows.Forms.TextBox();
-            this.officeName = new System.Windows.Forms.TextBox();
-            this.enname = new System.Windows.Forms.TextBox();
+            this.waves = new System.Windows.Forms.TextBox();
+            this.winds = new System.Windows.Forms.TextBox();
+            this.weathers = new System.Windows.Forms.TextBox();
             this.name = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
@@ -50,10 +50,10 @@ namespace WeatherApp {
             // tbWeatherInfo
             // 
             this.tbWeatherInfo.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbWeatherInfo.Location = new System.Drawing.Point(124, 270);
+            this.tbWeatherInfo.Location = new System.Drawing.Point(124, 260);
             this.tbWeatherInfo.Multiline = true;
             this.tbWeatherInfo.Name = "tbWeatherInfo";
-            this.tbWeatherInfo.Size = new System.Drawing.Size(558, 141);
+            this.tbWeatherInfo.Size = new System.Drawing.Size(558, 151);
             this.tbWeatherInfo.TabIndex = 2;
             // 
             // label2
@@ -70,11 +70,11 @@ namespace WeatherApp {
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.Location = new System.Drawing.Point(36, 119);
+            this.label1.Location = new System.Drawing.Point(60, 106);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 24);
+            this.label1.Size = new System.Drawing.Size(58, 24);
             this.label1.TabIndex = 4;
-            this.label1.Text = "en名前";
+            this.label1.Text = "天候";
             // 
             // label3
             // 
@@ -90,56 +90,56 @@ namespace WeatherApp {
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label5.Location = new System.Drawing.Point(6, 166);
+            this.label5.Location = new System.Drawing.Point(73, 136);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(121, 24);
+            this.label5.Size = new System.Drawing.Size(34, 24);
             this.label5.TabIndex = 4;
-            this.label5.Text = "officeName";
+            this.label5.Text = "風";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label4.Location = new System.Drawing.Point(45, 213);
+            this.label4.Location = new System.Drawing.Point(73, 166);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 24);
+            this.label4.Size = new System.Drawing.Size(34, 24);
             this.label4.TabIndex = 4;
-            this.label4.Text = "parent";
+            this.label4.Text = "波";
             // 
-            // parent
+            // waves
             // 
-            this.parent.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.parent.Location = new System.Drawing.Point(133, 196);
-            this.parent.Multiline = true;
-            this.parent.Name = "parent";
-            this.parent.Size = new System.Drawing.Size(345, 41);
-            this.parent.TabIndex = 2;
+            this.waves.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.waves.Location = new System.Drawing.Point(133, 170);
+            this.waves.Multiline = true;
+            this.waves.Name = "waves";
+            this.waves.Size = new System.Drawing.Size(345, 24);
+            this.waves.TabIndex = 2;
             // 
-            // officeName
+            // winds
             // 
-            this.officeName.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.officeName.Location = new System.Drawing.Point(133, 149);
-            this.officeName.Multiline = true;
-            this.officeName.Name = "officeName";
-            this.officeName.Size = new System.Drawing.Size(345, 41);
-            this.officeName.TabIndex = 2;
+            this.winds.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.winds.Location = new System.Drawing.Point(133, 136);
+            this.winds.Multiline = true;
+            this.winds.Name = "winds";
+            this.winds.Size = new System.Drawing.Size(345, 24);
+            this.winds.TabIndex = 2;
             // 
-            // enname
+            // weathers
             // 
-            this.enname.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.enname.Location = new System.Drawing.Point(133, 102);
-            this.enname.Multiline = true;
-            this.enname.Name = "enname";
-            this.enname.Size = new System.Drawing.Size(345, 41);
-            this.enname.TabIndex = 2;
+            this.weathers.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.weathers.Location = new System.Drawing.Point(133, 106);
+            this.weathers.Multiline = true;
+            this.weathers.Name = "weathers";
+            this.weathers.Size = new System.Drawing.Size(345, 24);
+            this.weathers.TabIndex = 2;
             // 
             // name
             // 
             this.name.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.name.Location = new System.Drawing.Point(133, 55);
+            this.name.Location = new System.Drawing.Point(133, 72);
             this.name.Multiline = true;
             this.name.Name = "name";
-            this.name.Size = new System.Drawing.Size(345, 41);
+            this.name.Size = new System.Drawing.Size(345, 24);
             this.name.TabIndex = 2;
             // 
             // Form1
@@ -152,9 +152,9 @@ namespace WeatherApp {
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.parent);
-            this.Controls.Add(this.officeName);
-            this.Controls.Add(this.enname);
+            this.Controls.Add(this.waves);
+            this.Controls.Add(this.winds);
+            this.Controls.Add(this.weathers);
             this.Controls.Add(this.name);
             this.Controls.Add(this.tbWeatherInfo);
             this.Controls.Add(this.btWeatherGet);
@@ -174,9 +174,9 @@ namespace WeatherApp {
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox parent;
-        private System.Windows.Forms.TextBox officeName;
-        private System.Windows.Forms.TextBox enname;
+        private System.Windows.Forms.TextBox waves;
+        private System.Windows.Forms.TextBox winds;
+        private System.Windows.Forms.TextBox weathers;
         private System.Windows.Forms.TextBox name;
     }
 }

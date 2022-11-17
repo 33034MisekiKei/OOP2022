@@ -24,11 +24,15 @@ namespace WeatherApp {
             };
 
             var dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/130000.json");
+            tbWeatherInfo.Text = wc.DownloadString("https://www.jma.go.jp/bosai/weather_map/data/png/20221116185030_0_Z__C_010000_20221116120000_MET_CHT_JCIfsas24_Rjp_JCP600x581_JRcolor_Tjmahp_image.png");
 
             var json = JsonConvert.DeserializeObject<Class1[]>(dString);
 
-            tbWeatherInfo.Text = json[0].timeSeries[0].areas[0].weathers[0];
-            //name.Text = json[0].timeSeries[0].areas[0].area[];
+            name.Text = json[0].timeSeries[0].areas[1].area.name;
+            weathers.Text = json[0].timeSeries[0].areas[0].weathers[0];
+            winds.Text = json[0].timeSeries[0].areas[0].winds[0];
+            waves.Text = json[0].timeSeries[0].areas[0].waves[0];
+            
         }
     }
 }
