@@ -28,14 +28,11 @@ namespace WeatherApp {
             this.tbWeatherInfo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.waves = new System.Windows.Forms.TextBox();
-            this.winds = new System.Windows.Forms.TextBox();
-            this.weathers = new System.Windows.Forms.TextBox();
+            this.publishingOffice = new System.Windows.Forms.TextBox();
             this.name = new System.Windows.Forms.TextBox();
             this.pbImage = new System.Windows.Forms.PictureBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,17 +49,17 @@ namespace WeatherApp {
             // tbWeatherInfo
             // 
             this.tbWeatherInfo.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbWeatherInfo.Location = new System.Drawing.Point(124, 260);
+            this.tbWeatherInfo.Location = new System.Drawing.Point(12, 260);
             this.tbWeatherInfo.Multiline = true;
             this.tbWeatherInfo.Name = "tbWeatherInfo";
-            this.tbWeatherInfo.Size = new System.Drawing.Size(558, 151);
+            this.tbWeatherInfo.Size = new System.Drawing.Size(669, 151);
             this.tbWeatherInfo.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label2.Location = new System.Drawing.Point(12, 330);
+            this.label2.Location = new System.Drawing.Point(275, 233);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(106, 24);
             this.label2.TabIndex = 4;
@@ -72,105 +69,73 @@ namespace WeatherApp {
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.Location = new System.Drawing.Point(60, 106);
+            this.label1.Location = new System.Drawing.Point(18, 87);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 24);
+            this.label1.Size = new System.Drawing.Size(82, 24);
             this.label1.TabIndex = 4;
-            this.label1.Text = "天候";
+            this.label1.Text = "提供者";
             // 
-            // label3
+            // publishingOffice
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label3.Location = new System.Drawing.Point(60, 72);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 24);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "名前";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label5.Location = new System.Drawing.Point(73, 136);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(34, 24);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "風";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label4.Location = new System.Drawing.Point(73, 166);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(34, 24);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "波";
-            // 
-            // waves
-            // 
-            this.waves.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.waves.Location = new System.Drawing.Point(133, 170);
-            this.waves.Multiline = true;
-            this.waves.Name = "waves";
-            this.waves.Size = new System.Drawing.Size(362, 24);
-            this.waves.TabIndex = 2;
-            // 
-            // winds
-            // 
-            this.winds.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.winds.Location = new System.Drawing.Point(133, 136);
-            this.winds.Multiline = true;
-            this.winds.Name = "winds";
-            this.winds.Size = new System.Drawing.Size(362, 24);
-            this.winds.TabIndex = 2;
-            // 
-            // weathers
-            // 
-            this.weathers.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.weathers.Location = new System.Drawing.Point(133, 102);
-            this.weathers.Multiline = true;
-            this.weathers.Name = "weathers";
-            this.weathers.Size = new System.Drawing.Size(362, 28);
-            this.weathers.TabIndex = 2;
+            this.publishingOffice.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.publishingOffice.Location = new System.Drawing.Point(106, 74);
+            this.publishingOffice.Multiline = true;
+            this.publishingOffice.Name = "publishingOffice";
+            this.publishingOffice.Size = new System.Drawing.Size(374, 52);
+            this.publishingOffice.TabIndex = 2;
             // 
             // name
             // 
             this.name.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.name.Location = new System.Drawing.Point(133, 72);
+            this.name.Location = new System.Drawing.Point(67, 145);
             this.name.Multiline = true;
             this.name.Name = "name";
-            this.name.Size = new System.Drawing.Size(362, 24);
+            this.name.Size = new System.Drawing.Size(163, 50);
             this.name.TabIndex = 2;
             // 
             // pbImage
             // 
-            this.pbImage.Location = new System.Drawing.Point(501, 93);
+            this.pbImage.Location = new System.Drawing.Point(263, 145);
             this.pbImage.Name = "pbImage";
             this.pbImage.Size = new System.Drawing.Size(99, 50);
             this.pbImage.TabIndex = 5;
             this.pbImage.TabStop = false;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(134, 24);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 20);
+            this.comboBox1.TabIndex = 6;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label6.Location = new System.Drawing.Point(12, 156);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(58, 24);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "県名";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(693, 423);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.pbImage);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.waves);
-            this.Controls.Add(this.winds);
-            this.Controls.Add(this.weathers);
+            this.Controls.Add(this.publishingOffice);
             this.Controls.Add(this.name);
             this.Controls.Add(this.tbWeatherInfo);
             this.Controls.Add(this.btWeatherGet);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -183,14 +148,11 @@ namespace WeatherApp {
         private System.Windows.Forms.TextBox tbWeatherInfo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox waves;
-        private System.Windows.Forms.TextBox winds;
-        private System.Windows.Forms.TextBox weathers;
+        private System.Windows.Forms.TextBox publishingOffice;
         private System.Windows.Forms.TextBox name;
         private System.Windows.Forms.PictureBox pbImage;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label6;
     }
 }
 
