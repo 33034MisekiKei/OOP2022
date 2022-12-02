@@ -49,17 +49,17 @@ namespace WeatherApp {
             // tbWeatherInfo
             // 
             this.tbWeatherInfo.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbWeatherInfo.Location = new System.Drawing.Point(12, 260);
+            this.tbWeatherInfo.Location = new System.Drawing.Point(12, 221);
             this.tbWeatherInfo.Multiline = true;
             this.tbWeatherInfo.Name = "tbWeatherInfo";
-            this.tbWeatherInfo.Size = new System.Drawing.Size(669, 151);
+            this.tbWeatherInfo.Size = new System.Drawing.Size(669, 190);
             this.tbWeatherInfo.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label2.Location = new System.Drawing.Point(275, 233);
+            this.label2.Location = new System.Drawing.Point(292, 194);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(106, 24);
             this.label2.TabIndex = 4;
@@ -69,7 +69,7 @@ namespace WeatherApp {
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.Location = new System.Drawing.Point(18, 87);
+            this.label1.Location = new System.Drawing.Point(8, 87);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 24);
             this.label1.TabIndex = 4;
@@ -78,24 +78,24 @@ namespace WeatherApp {
             // publishingOffice
             // 
             this.publishingOffice.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.publishingOffice.Location = new System.Drawing.Point(106, 74);
+            this.publishingOffice.Location = new System.Drawing.Point(97, 87);
             this.publishingOffice.Multiline = true;
             this.publishingOffice.Name = "publishingOffice";
-            this.publishingOffice.Size = new System.Drawing.Size(374, 52);
+            this.publishingOffice.Size = new System.Drawing.Size(301, 24);
             this.publishingOffice.TabIndex = 2;
             // 
             // name
             // 
             this.name.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.name.Location = new System.Drawing.Point(67, 145);
+            this.name.Location = new System.Drawing.Point(97, 145);
             this.name.Multiline = true;
             this.name.Name = "name";
-            this.name.Size = new System.Drawing.Size(163, 50);
+            this.name.Size = new System.Drawing.Size(163, 24);
             this.name.TabIndex = 2;
             // 
             // pbImage
             // 
-            this.pbImage.Location = new System.Drawing.Point(263, 145);
+            this.pbImage.Location = new System.Drawing.Point(299, 119);
             this.pbImage.Name = "pbImage";
             this.pbImage.Size = new System.Drawing.Size(99, 50);
             this.pbImage.TabIndex = 5;
@@ -106,14 +106,14 @@ namespace WeatherApp {
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(134, 24);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 20);
+            this.comboBox1.Size = new System.Drawing.Size(136, 20);
             this.comboBox1.TabIndex = 6;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label6.Location = new System.Drawing.Point(12, 156);
+            this.label6.Location = new System.Drawing.Point(18, 145);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(58, 24);
             this.label6.TabIndex = 4;
